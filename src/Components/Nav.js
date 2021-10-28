@@ -16,7 +16,7 @@ const Nav = () => {
             </div>
             <main>
                 <Route
-                    path='/'
+                    exact path='/'
                     component={Home}
                 />
                 <Route
