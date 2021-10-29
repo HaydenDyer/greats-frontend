@@ -6,14 +6,14 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 const Nav = () => {
     return (
         <Router>
-            <div>
+            <nav>
                 <Link to ='/' className='navLink'>
                     <button>Home</button>
                 </Link>
                 <Link to ='/artists' className='navLink'>
                     <button>Artists</button>
                 </Link>
-            </div>
+            </nav>
             <main>
                 <Route
                     exact path='/'
