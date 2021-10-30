@@ -1,10 +1,15 @@
-import Nav from "./Components/Nav";
-import './App.css'
+import './App.css';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import Posts from './Components/Posts';
 
-function App() {
+const App = () => {
   return (
     <div className='App'>
-      <Nav />
+      <Router>
+        <main>
+          <Route exact path='/' component={Posts}/>
+        </main>
+      </Router>
     </div>
   );
 }
