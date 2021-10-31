@@ -1,15 +1,14 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import {useHistory} from 'react-router-dom';
+// import {useHistory} from 'react-router-dom';
 
-const Post = () => {
+const CreatePost = () => {
 
     const [author, setAuthor] = useState()
     const [subject, setSubject] = useState()
     const [body, setBody] = useState()
 
-    const handleSubmit = async (event, next) => {
-        event.preventDefault()
+    const createPost = async (event, next) => {
         try {
             const res = await axios.post(`http://localhost:8000/posts/`, {
                 author: author,
@@ -17,15 +16,15 @@ const Post = () => {
                 body: body
             })
             res.status(201)
-        } catch(error) {
-            alert(error)
+        } catch(err) {
+            console.error(err)
         }
     }
 
     return (
 		<div>
 			<h2>make a post!</h2>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={createPost}>
 				<label>author:</label>
 				<input
 					type='text'
@@ -53,4 +52,4 @@ const Post = () => {
     );
 };
 
-export default Post;
+export default CreatePost;
