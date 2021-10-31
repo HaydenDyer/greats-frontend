@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import CreatePost from './CreatePost';
+import Post from './Post';
 
 const Home = () => {
     const [data, setData] = useState([])
+    const [editObject, setEditObject] = useState(null)
 
     const getPosts = async () => {
 		try {
@@ -18,17 +19,23 @@ const Home = () => {
 		getPosts();
 	}, []);
 
-    const deletePost = async () => {
+    const deletePost = async (id) => {
         try {
-            const res = await axios.get(`http://localhost:8000/posts/`)
+            const res = await axios.delete(`http://localhost:8000/posts/${id}`)
+            getPosts()
         } catch(err) {
             console.error(err)
         }
     }
 
-    const editPost = async () => {
+    const editPost = async (id) => {
         try {
-            const res = await axios.put(`http://localhost:8000/posts/`)
+            // const res = await axios.put(`http://localhost:8000/posts/${id}`)
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].id == id) {
+                    setEditObject(data[i])
+                }
+            }
         } catch(err) {
             console.error(err)
         }
@@ -45,16 +52,16 @@ const Home = () => {
                 this is a website where you can share your favorite music, and discover new music too!
             </p>
 
-            <CreatePost />
+            <Post editObject={editObject}/>
 
             <div className='posts'>
 				{data.map((item) => (
                     <div className='post'>
-                        <h3>Posted by {item.author} on {item.created_on}</h3>
+                        <h3>posted by {item.author} on {item.created_on}</h3>
                         <h2>{item.subject}</h2>
                         <p>{item.body}</p>
-                        <button onClick={deletePost}>delete</button>
-                        <button onClick={editPost}>edit</button>
+                        <button onClick={() => deletePost(item.id)}>delete</button>
+                        <button onClick={() => editPost(item.id)}>edit</button>
                     </div>
 				))}
 			</div>
