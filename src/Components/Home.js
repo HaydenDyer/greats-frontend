@@ -1,67 +1,25 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-import Post from './Post';
+import React from 'react';
 
 const Home = () => {
-    const [data, setData] = useState([])
-    const [editObject, setEditObject] = useState(null)
-
-    const getPosts = async () => {
-		try {
-			const res = await axios.get(`http://localhost:8000/posts/`);
-			setData(res.data);
-		} catch(err) {
-			console.error(err);
-		}
-	};
-
-	useEffect(() => {
-		getPosts();
-	}, []);
-
-    const deletePost = async (id) => {
-        try {
-            await axios.delete(`http://localhost:8000/posts/${id}`)
-            getPosts()
-        } catch(err) {
-            console.error(err)
-        }
-    }
-
-    const editPost = async (id) => {
-        try {
-            for (let i = 0; i < data.length; i++) {
-                if (data[i].id === id) {
-                    setEditObject(data[i])
-                }
-            }
-        } catch(err) {
-            console.error(err)
-        }
-    }
-
     return (
-        <div className='home'>
-            <h1>
-                soundspreader
-            </h1>
-            <p>
-                this is a website where you can share your favorite music.
-            </p>
-
-            <Post editObject={editObject}/>
-
-            <div className='posts'>
-				{data.map((item) => (
-                    <div className='post'>
-                        <h3>posted by {item.author} on {item.created_on}</h3>
-                        <h2>{item.subject}</h2>
-                        <p>{item.body}</p>
-                        <button onClick={() => deletePost(item.id)}>delete</button>
-                        <button onClick={() => editPost(item.id)}>edit</button>
-                    </div>
-				))}
-			</div>
+        <div>
+            <div className='home'>
+                <h1>♫soundspreader♫</h1>
+                <p className='about'>
+                    Welcome to Soundspreader! This is a place where you can come to see what's popular in music right now and also share your favorite songs. If you don't have a preferred music streaming provider, below are a few links to a few of the top streaming services.
+                </p>
+            </div>
+            <div>
+                <a href="https://www.spotify.com/us/">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Spotify_App_Logo.svg/2048px-Spotify_App_Logo.svg.png" alt="Spotify"/>
+                </a>
+                <a href="https://www.apple.com/apple-music/">
+                <img src="https://i.pinimg.com/originals/67/f6/cb/67f6cb14f862297e3c145014cdd6b635.jpg" alt="Apple Music"/>
+                </a>
+                <a href="https://tidal.com/">
+                <img src="https://images.squarespace-cdn.com/content/v1/5214dea7e4b09480ccb6affe/1626190436338-EHMN8ZREO11UUNF8VG9S/Tidal+Thumbnail.png" alt="Tidal"/>
+                </a>
+            </div>
         </div>
     );
 };

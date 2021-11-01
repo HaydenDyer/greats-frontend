@@ -1,5 +1,5 @@
 .App {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Lato', sans-serif;
   color: #444444;
   display: flex;
   flex-direction: column;
@@ -14,17 +14,88 @@
   align-content: center;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  width: 800px;
+}
+
+.about {
+  font-size: 24px;
+  font-weight: bolder;
+  line-height: 1.75;
 }
 
 h1 {
   font-size: 56px;
-  border: solid #DDDDDD 1px;
-  border-radius: 36px;
-  padding: 16px;
+  border-radius: 12px;
+  padding: 32px;
   max-width: fit-content;
-  background-color: #EEEEEE;
+  background-color: rgba(240,240,240, 0.5);
 }
 
 .post {
   max-width: 800px;
+}
+
+button {
+  margin: 4px;
+}
+
+label {
+  margin: 4px;
+}
+
+form {
+  display: flex;
+  align-items: center;
+}
+
+.topSongs {
+  text-align: left;
+}
+
+.song {
+  width: fit-content;
+  padding: 8px;
+}
+
+.Link {
+  margin: 64px;
+  text-decoration: none;
+  color: white
+}
+
+.Link:hover {
+  color: #777777;
+}
+
+img {
+  width: 96px;
+  margin: 8px;
+  border-radius: 12px;
+}
+
+.postsPage {
+  background-color: rgba(240,240,240, 0.5);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: left;
+}
+
+.topSongs {
+  background-color: rgba(240,240,240, 0.5);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+nav {
+  padding: 12px;
+  background-color: #444444;
+  width: 100%;
+  margin: 12px;
+}
+
+input, textarea {
+  border-radius:  4px;
+  border: none;
+  font-family: 'Lato', sans-serif;
 }

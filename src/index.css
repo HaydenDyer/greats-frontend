@@ -1,0 +1,6 @@
+body {
+    overflow: overlay;
+    background-image: url(./iStock-1288526180.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}

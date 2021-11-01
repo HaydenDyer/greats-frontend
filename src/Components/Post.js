@@ -5,14 +5,13 @@ const Post = (props) => {
 
 	console.log(props.editObject)
 
-    const [author, setAuthor] = useState(props.editObject ? props.editObject.author : '')
-    const [subject, setSubject] = useState(props.editObject ? props.editObject.subject : '')
+    const [artist, setArtist] = useState(props.editObject ? props.editObject.artist : '')
+    const [songTitle, setSongTitle] = useState(props.editObject ? props.editObject.songTitle : '')
     const [body, setBody] = useState(props.editObject ? props.editObject.body : '')
 
     useEffect(() => {
-		console.log(props.editObject)
-		setAuthor(props.editObject ? props.editObject.author : '')
-		setSubject(props.editObject ? props.editObject.subject : '')
+		setArtist(props.editObject ? props.editObject.artist : '')
+		setSongTitle(props.editObject ? props.editObject.songTitle : '')
 		setBody(props.editObject ? props.editObject.body : '')
 	}, [props])
 
@@ -20,16 +19,16 @@ const Post = (props) => {
         try {
 			if (props.editObject) {
 				await axios.put(`http://localhost:8000/posts/${props.editObject.id}`, {
-					author: author,
-					subject: subject,
+					artist: artist,
+					songTitle: songTitle,
 					body: body,
 					created_on: props.editObject.created_on,
 					id: props.editObject.id,
 				})
 			}
             axios.post(`http://localhost:8000/posts/`, {
-                author: author,
-                subject: subject,
+                artist: artist,
+                songTitle: songTitle,
                 body: body
             })
         } catch(err) {
@@ -39,25 +38,24 @@ const Post = (props) => {
 
     return (
 		<div>
-			<h3>make a post below!</h3>
+			<h2>Share some of your favorite songs below!</h2>
 			<form onSubmit={createPost}>
-				<label>author:</label>
+				<label>Artist:</label>
 				<input
 					type='text'
 					required
-					value={author}
-					onChange={(event) => setAuthor(event.target.value)}
+					value={artist}
+					onChange={(event) => setArtist(event.target.value)}
 				/>
-				<label>subject:</label>
+				<label>Song title:</label>
 				<input
 					type='text'
 					required
-					value={subject}
-					onChange={(event) => setSubject(event.target.value)}
+					value={songTitle}
+					onChange={(event) => setSongTitle(event.target.value)}
 				/>
-				<label>body:</label>
-				<input
-					type='textarea'
+				<label>Why you like it:</label>
+				<textarea
 					required
 					value={body}
 					onChange={(event) => setBody(event.target.value)}
