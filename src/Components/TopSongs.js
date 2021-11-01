@@ -9,8 +9,6 @@ const TopSongs = () => {
 		try {
 			const res = await axios.get(`https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=b7abc3e2db3124fd769e19dbe8cdcb26&format=json`);
 			setSongs(res.data.tracks.track);
-            console.log(res.data.tracks.track);
-            console.log('hi');
 		} catch(err) {
 			console.error(err);
 		}

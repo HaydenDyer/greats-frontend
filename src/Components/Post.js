@@ -2,9 +2,6 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 const Post = (props) => {
-
-	console.log(props.editObject)
-
     const [artist, setArtist] = useState(props.editObject ? props.editObject.artist : '')
     const [songTitle, setSongTitle] = useState(props.editObject ? props.editObject.songTitle : '')
     const [body, setBody] = useState(props.editObject ? props.editObject.body : '')
