@@ -33,7 +33,7 @@ h1 {
 }
 
 .post {
-  max-width: 800px;
+  max-width: 1000px;
 }
 
 button {
@@ -65,7 +65,7 @@ form {
 }
 
 .Link:hover {
-  color: #777777;
+  color: #999999;
 }
 
 img {
@@ -98,4 +98,25 @@ input, textarea {
   border-radius:  4px;
   border: none;
   font-family: 'Lato', sans-serif;
+}
+
+h2 {
+  color: black;
+}
+
+.songLink {
+  text-decoration: none;
+  color: black;
+}
+
+.songLink:hover {
+  color: #999999
+}
+
+a {
+  text-decoration: none;
+}
+
+img:hover {
+  box-shadow: 0px 0px 8px #777777;
 }

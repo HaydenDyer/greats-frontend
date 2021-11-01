@@ -10,7 +10,7 @@ const Home = () => {
                 </p>
             </div>
             <div>
-                <a href="https://www.spotify.com/us/">
+                <a href="https://www.spotify.com/">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Spotify_App_Logo.svg/2048px-Spotify_App_Logo.svg.png" alt="Spotify"/>
                 </a>
                 <a href="https://www.apple.com/apple-music/">

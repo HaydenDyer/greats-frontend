@@ -24,8 +24,10 @@ const TopSongs = () => {
         <div className='topSongs'>
             <h2>Here are the top songs of this week, based on the Last.fm charts.</h2>
             {songs.map((song) => (
-                <div className='song'>
-                    <h2>{song.name}</h2>
+                <div className='song' key={song.name}>
+                    <a href={song.url}>
+                        <h2 className='songLink'>{song.name}</h2>
+                    </a>
                     <h3>by {song.artist.name}</h3>
                 </div>
             ))}
