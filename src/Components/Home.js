@@ -21,7 +21,7 @@ const Home = () => {
 
     const deletePost = async (id) => {
         try {
-            const res = await axios.delete(`http://localhost:8000/posts/${id}`)
+            await axios.delete(`http://localhost:8000/posts/${id}`)
             getPosts()
         } catch(err) {
             console.error(err)
@@ -30,9 +30,8 @@ const Home = () => {
 
     const editPost = async (id) => {
         try {
-            // const res = await axios.put(`http://localhost:8000/posts/${id}`)
             for (let i = 0; i < data.length; i++) {
-                if (data[i].id == id) {
+                if (data[i].id === id) {
                     setEditObject(data[i])
                 }
             }
@@ -42,14 +41,12 @@ const Home = () => {
     }
 
     return (
-        <div>
-
+        <div className='home'>
             <h1>
-                soundspreader.
+                soundspreader
             </h1>
-
             <p>
-                this is a website where you can share your favorite music, and discover new music too!
+                this is a website where you can share your favorite music.
             </p>
 
             <Post editObject={editObject}/>

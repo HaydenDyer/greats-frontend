@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-// import {useHistory} from 'react-router-dom';
 
 const Post = (props) => {
 
@@ -17,24 +16,22 @@ const Post = (props) => {
 		setBody(props.editObject ? props.editObject.body : '')
 	}, [props])
 
-    const createPost = async (event, next) => {
+    const createPost = async () => {
         try {
 			if (props.editObject) {
-				const res = await axios.put(`http://localhost:8000/posts/${props.editObject.id}`, {
+				await axios.put(`http://localhost:8000/posts/${props.editObject.id}`, {
 					author: author,
 					subject: subject,
 					body: body,
 					created_on: props.editObject.created_on,
 					id: props.editObject.id,
 				})
-				return
 			}
-            const res = await axios.post(`http://localhost:8000/posts/`, {
+            axios.post(`http://localhost:8000/posts/`, {
                 author: author,
                 subject: subject,
                 body: body
             })
-            res.status(201)
         } catch(err) {
             console.error(err)
         }
@@ -42,7 +39,7 @@ const Post = (props) => {
 
     return (
 		<div>
-			<h2>make a post!</h2>
+			<h3>make a post below!</h3>
 			<form onSubmit={createPost}>
 				<label>author:</label>
 				<input
